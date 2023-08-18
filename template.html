@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="pinkflix.css" /> 
     <title>Pinkflix</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="header--logo">
-            <a href="/">
-                <img src="/images/round-logo.png">
-            </a>
-        </div>
-        <a class="header--category" href="/">หมวดหมู่</a>
-        <p>แฟนตาซี</p>
-        <input type="text" placeholder="Search..">
+      <div class="header--logo">
+        <a href="/">
+          <img src="/images/round-logo.png" />
+        </a>
+      </div>
+      <a class="header--category" href="/">หมวดหมู่</a>
+      <a class="header--category--genres" href="/">แฟนตาซี</a>
+      <form action="" class="header--searchbar">
+        <input type="text" placeholder="Search.." />
+        <button type="submit"><img src="/images/search.png"></button>
+      </form>
     </header>
     <div class="container">
-        <div class="container--slideshow">
-            <div class="slideshow--logo">
-                <img src="/images/sharp-logo.png">
-            </div>
-            <div class="slideshow--image">
-                <img src="/images/">
-            </div>
+      <div class="container--slideshow">
+        <div class="slideshow--logo">
+          <img src="/images/sharp-logo.png" />
         </div>
-
-        <div class="container--animeRow">
-            <button id="slideLeft" type="button">Slide left</button>
-            <div class="container--animeRow--movie">
-                <img src="/images/">
-            </div>
-            <button id="slideRight" type="button">Slide right</button>
+        <div class="slideshow--image">
+          <img src="/images/" />
         </div>
+      </div>
 
+      <div class="container--animeRow">
+        <button id="slideLeft" type="button">Slide left</button>
+        <div class="container--animeRow--movie">
+          <img src="/images/" />
+        </div>
+        <button id="slideRight" type="button">Slide right</button>
+      </div>
     </div>
 
     <footer>
-        <p>Create By: Lugie, KwanJai, TinTin, KwaKwa</p>
+      <p>Create By: Lugie, KwanJai, TinTin, KwaKwa</p>
     </footer>
-
-</body>
+  </body>
 </html>
