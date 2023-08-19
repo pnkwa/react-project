@@ -5,44 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="pinkflix.css" /> 
+    <link rel="stylesheet" type="text/css" href="pinkflix.css" />
+    <script
+      src="https://kit.fontawesome.com/4ea8c7073e.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Pinkflix</title>
   </head>
   <body>
     <header>
       <div class="header--logo">
         <a href="/">
-          <img src="/images/round-logo.png" />
+          <img src="/images/round-logo.png" alt="img" />
         </a>
       </div>
       <a class="header--category" href="/">หมวดหมู่</a>
       <a class="header--category--genres" href="/">แฟนตาซี</a>
       <form action="" class="header--searchbar">
         <input type="text" placeholder="Search.." />
-        <button type="submit"><img src="/images/search.png"></button>
+        <button type="submit">
+          <img src="/images/search.png" alt="img" />
+        </button>
       </form>
     </header>
     <div class="container">
       <div class="container--slideshow">
         <div class="slideshow--logo">
-          <img src="/images/sharp-logo.png" />
+          <img src="/images/sharp-logo.png" alt="img" />
         </div>
         <div class="slideshow--image">
-          <img src="/images/slideshow/slide-1.png" />
+          <img src="/images/slideshow/slide-1.png" alt="img" />
         </div>
       </div>
 
-      <div class="container--animeRow">
-        <button id="slideLeft" type="button">Slide left</button>
-        <div class="container--animeRow--movie">
-          <img src="/images/" />
-        </div>
-        <button id="slideRight" type="button">Slide right</button>
-      </div>
+      <div class="container--animeRow"><!-----anime zone-->
+
+        <div class="container--animeRow--anime"><!-----wrapper-->
+
+          <i class="fa-solid fa-angle-left"></i>
+          <h1>Anime Hot Hit</h1>
+          <div class="container--animeRow--anime--list"><!-----carousel-->
+
+            <div class="itemes"><!-----card-->
+              <img src="/images/anime-poster/poster-1.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-2.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-3.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-4.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-5.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-6.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-7.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-8.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-9.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-10.jpg" alt="img" />
+            </div>
+          </div><!-----carousel-->
+
+          <i class="fa-solid fa-angle-right"></i>
+        </div><!-----wrapper-->
+ <!--------------anime row#2-->
+
+        <div class="container--animeRow--anime"><!-----wrapper-->
+
+          <i class="fa-solid fa-angle-left"></i>
+          <h1>Anime Summer Hit</h1>
+          <div class="container--animeRow--anime--list"><!-----carousel-->
+
+            <div class="itemes"><!-----card-->
+              <img src="/images/anime-poster/poster-1.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-2.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-3.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-4.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-5.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-6.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-7.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-8.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-9.jpg" alt="img" />
+            </div>
+            <div class="itemes">
+              <img src="/images/anime-poster/poster-10.jpg" alt="img" />
+            </div>
+          </div><!-----carousel-->
+
+          <i class="fa-solid fa-angle-right"></i>
+        </div><!-----wrapper-->
+
+
+      </div><!-----anime zone-->
     </div>
 
     <footer>
-      <p>Create By: Lugie, KwanJai, TinTin, KwaKwa</p>
+      <p>Create By Lugie, KwanJai, TinTin, KwaKwa  for React project ©2023</p>
     </footer>
   </body>
 </html>
