@@ -16,7 +16,7 @@
 body {
   margin: 0;
   padding: 0;
-  background: rgb(255, 255, 255);
+  background: linear-gradient(to bottom, #f7a6b9 -20%, black 50%);
 }
 
 header {
@@ -109,32 +109,41 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: blue;
+  background-color: transparent;
   height: 500px;
-  padding: 0 50px 0 50px;
+  padding: 0 30px 0 30px;
   margin-top: 100px;
 }
 .container--anime--image {
   width: 40%;
   height: 500px;
-  background-color: red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .container--anime--image img {
   width: 100%;
-  height: 500px;
+  height: 450px;
+  transform: scale(1);
+  transition: all ease 0.2s;
+  border-radius: 5px;
   object-fit: cover;
   object-position: 100% 30%;
 }
+.container--anime--image img:hover {
+  transform: scale(1.05);
+}
+
 .container--anime--details {
   color: #fff;
-  background-color: peru;
+  background-color: transparent;
   width: 60%;
   height: 500px;
 }
 .container--anime--details .infomation {
   text-align: center;
-  background-color: chartreuse;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -148,7 +157,7 @@ header {
   flex-direction: row;
   justify-content: center;
   list-style: none;
-  background-color: crimson;
+  background-color: transparent;
   margin-bottom: 20px;
 }
 .container--anime--details .infomation li {
@@ -164,10 +173,15 @@ header {
   display: flex;
   flex-direction: row;
   margin: 0 30px 0 30px;
-  background-color: darkgreen;
+  align-items: center;
 }
 .container--anime--details .rating p {
   padding-top: 10px;
+}
+.container--anime--details .rating-star {
+  padding-left: 20px;
+  font-size: 30px;
+  color: #f7a6b9;
 }
 
 .container--anime--details .logo {
@@ -178,6 +192,144 @@ header {
 }
 .container--anime--details .logo img {
   width: 230px;
+}
+
+/*review*/
+.container--review {
+  margin: 20px;
+  color: #fff;
+  background-color: transparent;
+}
+.container--review .heading {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+.container--review .heading p {
+  padding-top: 15px;
+}
+.container--review--box {
+  background: #ffffff38;
+  margin: 0 20px 20px 0;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+}
+.container--review--box .name {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  color: #f7a6b9;
+}
+.container--review--box .name p {
+  padding-left: 30px;
+  color: #fff;
+}
+.container--review--box .comment {
+  display: flex;
+  flex-direction: column;
+  padding-left: 100px;
+  font-size: 20px;
+  width: 100%;
+  height: 50px;
+}
+
+.container--review--box .rating {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  align-items: center;
+  color: #f7a6b9;
+}
+.container--review--box .rating-star {
+  padding-left: 20px;
+  font-size: 30px;
+  color: #f7a6b9;
+}
+.container--review--box .count {
+  position: absolute;
+  right: 50px;
+  transform: translateY(-100%);
+  font-size: 40px;
+  color: #f7a6b9;
+  font-weight: bold;
+}
+
+/*comment*/
+.container--comment {
+  margin: 20px;
+  color: #fff;
+}
+.container--comment h1 {
+  margin-bottom: 20px;
+}
+.container--comment--box {
+  padding: 20px;
+  background-color: #1e1e1e;
+  border-radius: 5px;
+}
+.container--comment--box .typename {
+  width: 100%;
+  height: 50px;
+  background: #ffffff38;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+}
+.container--comment--box .typecomment {
+  width: 100%;
+  height: 100px;
+  background: #ffffff38;
+  border-radius: 10px;
+  margin: 20px 0 20px 0;
+  display: flex;
+  padding-top: 20px;
+}
+.container--comment--box input,
+textarea {
+  background: transparent;
+  width: auto;
+  flex: 1;
+  border: 0;
+  outline: none;
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+  color: #fff;
+  padding-left: 20px;
+}
+.container--comment--box ::placeholder {
+  color: #fff;
+}
+.container--comment--box .rating {
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+}
+.container--comment--box .rating-star {
+  font-size: 30px;
+  color: #f7a6b9;
+  padding-left: 20px;
+}
+.container--comment--box .button {
+  position: absolute;
+  right: 40px;
+  transform: translateY(-80%);
+}
+.container--comment--box button {
+  font-size: 25px;
+  font-weight: bold;
+  color: #f7a6b9;
+  border: 3px solid #f7a6b9;
+  background: transparent;
+  border-radius: 50px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all ease 0.5s;
+}
+.container--comment--box button:hover {
+  color: #ffffff;
+  background: #ff0582;
+  transition: all ease 0.5s;
 }
 
 /*footer*/
