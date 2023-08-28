@@ -13,6 +13,7 @@ const GET_AIRING_ANIME = "GET_AIRING_ANIME";
 const GET_PICTURES = "GET_PICTURES";
 const GET_ANIME_DETAILS = "GET_ANIME_DETAILS";
 const GET_ANIME_GENRES = "GET_ANIME_GENRES";
+const SET_SELECTED_GENRE = "SET_SELECTED_GENRE";
 
 //reducer
 const reducer = (state, action) => {
@@ -33,6 +34,8 @@ const reducer = (state, action) => {
       return { ...state, animeGenres: action.payload, loading: false };
     case GET_ANIME_DETAILS:
       return { ...state, selectedAnime: action.payload, loading: false };
+    case SET_SELECTED_GENRE:
+      return { ...state, selectedGenre: action.payload };
 
     default:
       return state;
@@ -49,7 +52,8 @@ export const GlobalContextProvider = ({ children }) => {
     isSearch: false,
     searchResults: [],
     loading: false,
-    
+    animeGenres: [], // Add animeGenres
+    selectedGenre: null, // Add selectedGenre
   };
 
   const [state, dispatch] = useReducer(reducer, intialState);
@@ -76,12 +80,23 @@ export const GlobalContextProvider = ({ children }) => {
   };
 
   //fetch popular anime
+  // Inside getPopularAnime function
   const getPopularAnime = async () => {
     dispatch({ type: LOADING });
-    const response = await fetch(`${baseUrl}/top/anime?filter=bypopularity`);
-    const data = await response.json();
-    dispatch({ type: GET_POPULAR_ANIME, payload: data.data });
+    try {
+      const response = await fetch(`${baseUrl}/top/anime?filter=bypopularity`);
+      if (response.status === 429) {
+        console.error("API rate limit exceeded");
+        // Handle rate limit exceeded error, maybe use a timeout and retry
+        return;
+      }
+      const data = await response.json();
+      dispatch({ type: GET_POPULAR_ANIME, payload: data.data });
+    } catch (error) {
+      console.error("Error fetching popular anime:", error);
+    }
   };
+
 
   //fetch upcoming anime
   const getUpcomingAnime = async () => {
@@ -131,7 +146,6 @@ export const GlobalContextProvider = ({ children }) => {
       console.error("Error fetching anime genres:", error);
     }
   };
-  
 
   // Fetch anime details by ID
   const getAnimeDetails = async (id) => {
@@ -141,9 +155,27 @@ export const GlobalContextProvider = ({ children }) => {
     dispatch({ type: GET_ANIME_DETAILS, payload: data });
   };
 
+  // Action to set the selected genre
+  const setSelectedGenre = (genreId) => {
+    dispatch({ type: SET_SELECTED_GENRE, payload: genreId });
+  };
+
+  // Define the getAnimeNamesByGenre function
+// Inside your context file
+const getAnimeNamesByGenre = async (genreId) => {
+  const genre = state.animeGenres.find((genre) => genre.mal_id === genreId);
+  if (genre && genre.name) {
+    return genre.name; // Return the genre name as a single string
+  }
+  return "";
+};
+
+
+
+
   //initial render
   React.useEffect(() => {
-    getPopularAnime();
+    getPopularAnime(); 
     getAnimeGenres(); // Fetch anime genres
   }, []);
 
@@ -161,6 +193,8 @@ export const GlobalContextProvider = ({ children }) => {
         getAnimePictures,
         getAnimeGenres,
         getAnimeDetails,
+        getAnimeNamesByGenre,
+        setSelectedGenre, // Add this action to the value
       }}
     >
       {children}
