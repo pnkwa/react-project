@@ -1,0 +1,240 @@
+:root {
+  font-family: "Inter", sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: "Inter var", sans-serif;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background: black;
+}
+
+header {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 30px;
+  background: black;
+  transition: all ease 0.5s;
+}
+.header--logo {
+  display: flex;
+  align-items: center;
+}
+
+.header--logo a {
+  text-decoration: none;
+}
+
+.header--logo img {
+  width: 200px;
+  height: auto;
+  cursor: pointer;
+}
+
+.header--category {
+  color: #f7a6b9;
+  text-decoration: none;
+  font-size: 20px;
+  margin: 20px;
+}
+
+.header--category--genres {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  padding-top: 5px;
+}
+
+.header--searchbar {
+  width: 100%;
+  max-width: 20%;
+  height: 50%;
+  background: #f7a6b9;
+  display: flex;
+  align-items: center;
+  border-radius: 60px;
+  padding-right: 1%;
+  padding-left: 10px;
+  margin-left: auto;
+}
+
+.header--searchbar input {
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+  font-size: 15px;
+  color: #fff;
+}
+
+.header--searchbar ::placeholder {
+  color: #fff;
+}
+
+.header--searchbar button img {
+  width: 25px;
+  transition: filter 0.3s;
+}
+
+.header--searchbar button {
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  background: transparent;
+}
+
+.header--searchbar button:hover img {
+  filter: invert(100%) sepia(50%) saturate(50%);
+}
+
+/*slideshow*/
+.container--slideshow {
+  position: relative;
+  width: 100%;
+  height: 50%;
+  background-color: rgb(0, 0, 0);
+}
+
+.container--slideshow img {
+  width: 100%;
+  height: 625px;
+  object-fit: cover;
+  object-position: 100% 25%;
+  transition: all ease 1.5s;
+}
+.container--slideshow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 10%, black 90%);
+  opacity: 1;
+}
+.slideshow--logo img {
+  position: absolute;
+  top: 275px;
+  right: 50%;
+  object-fit: none;
+}
+.container {
+  background-color: rgb(0, 0, 0);
+}
+
+/*animeRow*/
+.container--animeRow {
+  margin: 20px;
+}
+.container--animeRow h1 {
+  color: #fff;
+}
+.container--animeRow--anime {
+  max-width: 2200px;
+  background: rgb(0, 0, 0);
+  width: 100%;
+  position: relative;
+}
+/*
+.container--animeRow--anime--list {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% / 6));
+  overflow: hidden;
+ 
+}
+.container--animeRow--anime--list .itemes {
+  height: 340px;
+  cursor: pointer;
+  object-fit: cover;
+}
+.container--animeRow--anime--list .itemes img {
+  border-radius: 5px;
+  width: 100%;
+  height: 340px;
+  transform: scale(0.9);
+  transition: all ease 0.2s;
+}
+
+.container--animeRow--anime--list .itemes img:hover {
+  transform: scale(1);
+}
+.container--animeRow--anime i {
+  color: #fff;
+  background: #f7a6b9;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  line-height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 3px 6px rgb(0, 0, 0.5);
+  z-index: 1; 
+}
+
+.container--animeRow--anime i:first-child {
+  left: -15px;
+}
+.container--animeRow--anime i:last-child {
+  right: -15px;
+}
+
+@media screen and (max-width: 1000px) {
+  .container--animeRow--anime--list {
+    grid-auto-columns: calc((100% / 4));
+  }
+}
+@media screen and (max-width: 800px) {
+  .container--animeRow--anime--list {
+    grid-auto-columns: calc((100% / 3));
+  }
+}
+@media screen and (max-width: 500px) {
+  .container--animeRow--anime--list {
+    grid-auto-columns: calc((100% / 2));
+  }
+}
+@media screen and (max-width: 400px) {
+  .container--animeRow--anime--list {
+    grid-auto-columns: 100%;
+  }
+}
+*/
+
+/*footer*/
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  color: #f7a6b9;
+  text-align: center;
+  background-color: rgb(0, 0, 0);
+  transition: all ease 0.5s;
+}
+
+footer p {
+  padding: 20px;
+  background: black;
+}
