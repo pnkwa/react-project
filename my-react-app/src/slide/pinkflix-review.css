@@ -167,10 +167,24 @@ header {
 .container--anime--details .synopsis {
   text-align: left;
   font-size: 16px;
+  padding: 30px;
 }
+
+.container--anime--details .synopsis button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  color:#f7a6b9;
+}
+
 .container--anime--details .infomation {
   text-align: left;
   font-size: 16px;
+}
+.container--anime--details .infomation b{
+  color: #f7a6b9;
 }
 
 .container--anime--details .rating {

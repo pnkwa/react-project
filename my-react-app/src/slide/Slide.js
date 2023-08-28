@@ -103,7 +103,7 @@ export default function Slide() {
             </div>
               <div className="synopsis">
               <p>
-              {showMore ? anime.synopsis?.substring(0, 200) + '...' : anime.synopsis}
+              {showMore ? anime.synopsis?.substring(0, 270) + '...' : anime.synopsis}
               <button onClick={() => setShowMore(!showMore)}>
                {showMore ? 'Show Less' : 'Read More'}
               </button>
@@ -111,13 +111,14 @@ export default function Slide() {
               </div>
               <div className="infomation">
                 <ul>
-                <p>React.Aired : {anime.aired}</p>
-                  <p>Rating : {anime.rating}</p>
-                  <p>Status : {anime.status}</p>
-                  <p>Score : {anime.score}</p>
-                  <p>Episodes : {anime.episodes} episodes | Duration : {anime.duration}</p>
-                  <p>Season : {anime.season}</p>
-                  <p>Genres : {anime.genres}</p>
+                <p><b>React.Aired : </b> {anime.aired}</p>
+                  <p><b>Rating : </b>{anime.rating}</p>
+                  <p><b>Status : </b>{anime.status}</p>
+                  <p><b>Score : </b>{anime.score}</p>
+                  <p><b>Episodes : </b>{anime.episodes} episodes</p>
+                  <p><b>Duration : </b>{anime.duration}</p>
+                  <p><b>Season : </b>{anime.season}</p>
+                  <p><b>Genres : </b>{anime.genres}</p>
                 </ul>
               </div>
           </div>
