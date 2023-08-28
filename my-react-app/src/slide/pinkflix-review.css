@@ -123,7 +123,7 @@ header {
   align-items: center;
 }
 
-.container--anime--image img {
+/* .container--anime--image img {
   width: 420px;
   height: 594px;
   transform: scale(1);
@@ -134,7 +134,33 @@ header {
 }
 .container--anime--image img:hover {
   transform: scale(1.05);
+} */
+
+.container--anime--image img {
+  --c: #f7a6b9; /* สีขอบ */
+  --b: 10px;    /* ความหนาขอบ */
+  --g: 5px;     /* ช่องว่างเมื่อโฮเวอร์ */
+  --_g: #0000 25%, var(--c) 0;
+  width: 420px;
+  height: 594px;
+  transform: scale(1);
+  transition: all ease 0.2s;
+  border-radius: 5px;
+  object-fit: cover;
+  object-position: 100% 30%;
+  cursor: pointer;
+  padding: calc(var(--g) + var(--b));
+  background: 
+    conic-gradient(from 180deg at top var(--b) right var(--b), var(--_g))
+    var(--_i, 200%) 0 / 200% var(--_i, var(--b)) no-repeat,
+    conic-gradient(at bottom var(--b) left var(--b), var(--_g))
+    0 var(--_i, 200%) / var(--_i, var(--b)) 200% no-repeat;
+  transition: .3s, background-position .3s .3s;
 }
+.container--anime--image img:hover {
+  --_i: 100%;
+  transition: .3s, background-size .3s .3s;
+} 
 
 .container--anime--details {
   color: #fff;
@@ -356,7 +382,6 @@ textarea {
   padding: 5px 5px 5px 5px;
   position: relative;
   background: linear-gradient(to right, #f7a6b9, #ff0582);
- 
 }
 
 /*footer*/
