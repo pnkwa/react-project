@@ -103,9 +103,9 @@ export default function Slide() {
             </div>
               <div className="synopsis">
               <p>
-              {showMore ? anime.synopsis?.substring(0, 270) + '...' : anime.synopsis}
+              {showMore ? anime.synopsis?.substring(0, 270) + '...     ' : anime.synopsis}
               <button onClick={() => setShowMore(!showMore)}>
-               {showMore ? 'Show Less' : 'Read More'}
+               {showMore ? 'Read More' : 'Show Less'}
               </button>
               </p>
               </div>

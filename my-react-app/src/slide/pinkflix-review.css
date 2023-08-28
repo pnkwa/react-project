@@ -353,11 +353,10 @@ textarea {
 }
 /*youtube*/
 .trailer-container {
-  border: 2px solid #ecccdc; 
-  border-radius: 10px; 
-  padding: 10px; 
-  background-color: #f7a6b9; 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* เพิ่มเงากรอบ */
+  padding: 5px 5px 5px 5px;
+  position: relative;
+  background: linear-gradient(to right, #f7a6b9, #ff0582);
+ 
 }
 
 /*footer*/
