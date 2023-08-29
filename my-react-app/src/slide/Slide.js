@@ -111,7 +111,7 @@ export default function Slide() {
               </div>
               <div className="infomation">
                 <ul>
-                <p><b>React.Aired : </b> {anime.aired}</p>
+                  <p><b>Aired : </b> {anime.aired}</p>
                   <p><b>Rating : </b>{anime.rating}</p>
                   <p><b>Status : </b>{anime.status}</p>
                   <p><b>Score : </b>{anime.score}</p>
