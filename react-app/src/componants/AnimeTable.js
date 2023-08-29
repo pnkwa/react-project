@@ -7,7 +7,7 @@ function AnimeTable({ title, animes, className }) {
 
   return (
     <div className={className}>
-      <div class="container--animeRow--anime">
+      <div className="container--animeRow--anime">
         <h1>Anime {title}</h1>
         <div className="container--animeRow--anime--all--list">
           {animes.length > 0 ? (
@@ -32,7 +32,7 @@ function AnimeTable({ title, animes, className }) {
 
 AnimeTable.propTypes = {
   title: PropTypes.string.isRequired,
-  fetchUrl: PropTypes.string.isRequired,
+  animes: PropTypes.array.isRequired,
   className: PropTypes.string.isRequired,
 };
 

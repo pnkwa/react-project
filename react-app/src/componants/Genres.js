@@ -2,8 +2,17 @@ import React, { useState, useEffect } from "react";
 import AnimeTable from "./AnimeTable";
 import AnimeRow from "./AnimeRow";
 import { useGlobalContext } from "../context/global";
+import { useParams } from "react-router-dom";
 
-function Genres({ title }) {
+function Genres() {
+  const [title, setTitle] = useState("");
+
+  const { genre } = useParams();
+
+  useEffect(() => {
+    setTitle(genre);
+  }, [genre]);
+  console.log(genre);
 
   const {
     popularAnime,
@@ -15,6 +24,7 @@ function Genres({ title }) {
     fallAnime,
     loading,
   } = useGlobalContext();
+
   console.log(title);
 
   <>

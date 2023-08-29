@@ -20,12 +20,10 @@ const reducer = (state, action) => {
       return { ...state, fallAnime: action.payload, loading: false };
     case GET_PICTURES:
       return { ...state, pictures: action.payload, loading: false };
-    case GET_ANIME_GENRES:
-      return { ...state, animeGenres: action.payload, loading: false };
     case GET_ANIME_DETAILS:
-      return { ...state, selectedAnime: action.payload, loading: false };
-    case SET_SELECTED_GENRE:
-      return { ...state, selectedGenre: action.payload };
+      return { ...state, animeDetails: action.payload, loading: false };
+    case GET_NOW_ANIME:
+      return { ...state, nowAnime: action.payload, loading: false };
 
     default:
       return state;
@@ -40,11 +38,10 @@ const GET_UPCOMING_ANIME = "GET_UPCOMING_ANIME";
 const GET_AIRING_ANIME = "GET_AIRING_ANIME";
 const GET_PICTURES = "GET_PICTURES";
 const GET_ANIME_DETAILS = "GET_ANIME_DETAILS";
-const GET_ANIME_GENRES = "GET_ANIME_GENRES";
-const SET_SELECTED_GENRE = "SET_SELECTED_GENRE";
 const GET_WINTER_ANIME = "GET_WINTER_ANIME";
 const GET_SUMMER_ANIME = "GET_SUMMER_ANIME";
 const GET_SPRING_ANIME = "GET_SPRING_ANIME";
 const GET_FALL_ANIME = "GET_FALL_ANIME";
+const GET_NOW_ANIME = "GET_NOW_ANIME";
 
 export default reducer;
