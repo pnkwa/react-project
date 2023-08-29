@@ -119,8 +119,11 @@ export default function Slide() {
                   <p><b>Duration : </b>{anime.duration}</p>
                   <p><b>Season : </b>{anime.season}</p>
                   <p><b>Genres : </b>{anime.genres}</p>
+                  <p><b>Rating : </b> ★★★★☆</p>
+                  <p><img src="sharp-logo.png" alt="Sharp Logo"/></p>
                 </ul>
               </div>
+            
           </div>
         </div>
       </div>

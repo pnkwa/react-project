@@ -172,10 +172,7 @@ header {
 .container--anime--details .infomation {
   display: flex;
   flex-direction: column;
-  padding: 30px 0 0 0;
-}
-.container--anime--details .infomation .p {
-  padding: 0 10px 0 10px;
+  padding: 0 30px 0 30px ;
 }
 .container--anime--details .title  {
   color: #f7a6b9;
@@ -184,7 +181,6 @@ header {
   justify-content: center;
   list-style: none;
   background-color: transparent;
-  margin-bottom: 20px;
 }
 .container--anime--details .title{
   padding: 0 10px 0 10px;
@@ -213,6 +209,16 @@ header {
   color: #f7a6b9;
 }
 
+.infomation ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  list-style: none;
+  padding: 0;
+}
+.infomation ul img {
+  width: 100px;
+  float: right;
+}
 .container--anime--details .rating {
   display: flex;
   flex-direction: row;
