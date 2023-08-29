@@ -1,11 +1,11 @@
 
-// const baseURL = 'https://api.jikan.moe/v4/'
+const baseURL = 'https://api.jikan.moe/v4/'
 
 const requests = {
-    fetchPopular: `top/anime?filter=bypopularity&limit=10`,
-    fetchTopAiring: `top/anime?filter=airing&limit=10`,
-    fetchTopAnime: `top/anime?filter=bypopularity&limit=10`,
-    fetchAllTopAiring: `top/anime?filter=bypopularity`,
+    fetchPopular: `${baseURL}top/anime?filter=bypopularity&limit=10`,
+    fetchTopAiring: `${baseURL}top/anime?filter=airing&limit=10`,
+    fetchTopAnime: `${baseURL}top/anime?filter=bypopularity&limit=10`,
+    fetchAllTopAiring: `${baseURL}top/anime?filter=bypopularity`,
     // fetchWinterAnime: '/seasons/2022/winter',
     // fetchAutumnAnime: '/seasons/2022/spring',
     //fetchFallAnime:'/seasons/2022/Fall'

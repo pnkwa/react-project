@@ -1,23 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import axios from "../axios";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-// const baseURL = "https://api.jikan.moe/v4/";
-
-function AnimeRow({ title, fetchUrl, className }) {
-  const [animes, setAnimes] = useState([]);
+function AnimeRow({ title, animes, className }) {
   const animeRowRef = useRef(null);
+  const [displayedAnimes, setDisplayedAnimes] = useState([]);
 
   useEffect(() => {
-    async function fetchAnimeData() {
-      const request = await axios.get(fetchUrl);
-      setAnimes(request.data.data);
-      return request;
+    if (animes) {
+      setDisplayedAnimes(animes.slice(0, 10)); 
     }
-    fetchAnimeData();
-  }, [fetchUrl]);
+  }, [animes]);
 
   const sideScroll = (element, speed, step, viewportFactor) => {
     let scrollAmount = 0;
@@ -42,10 +36,10 @@ function AnimeRow({ title, fetchUrl, className }) {
       <div className="container--animeRow--anime">
         <h1>Anime {title}</h1>
         <div className="container--animeRow--anime--list" ref={animeRowRef}>
-          {animes.length > 0 ? (
-            animes.map((anime) => (
+          {displayedAnimes.length > 0 ? (
+            displayedAnimes.map((anime) => (
               <div className="itemes" key={anime.mal_id}>
-                <Link to={`/anime-details/${anime.id}`}>
+                <Link to={`/anime-details/${anime.mal_id}`}>
                   <img
                     src={anime.images.jpg.large_image_url}
                     alt={anime.title}
@@ -77,8 +71,8 @@ function AnimeRow({ title, fetchUrl, className }) {
 }
 AnimeRow.propTypes = {
   title: PropTypes.string.isRequired,
-  fetchUrl: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired
+  animes: PropTypes.array.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 export default styled(AnimeRow)`

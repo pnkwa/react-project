@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useReducer } from "react";
+import { useState, useEffect } from "react";
+import reducer from "./reducer";
 
 const GlobalContext = createContext();
-
 const baseUrl = "https://api.jikan.moe/v4";
 
 //actions
@@ -14,40 +15,21 @@ const GET_PICTURES = "GET_PICTURES";
 const GET_ANIME_DETAILS = "GET_ANIME_DETAILS";
 const GET_ANIME_GENRES = "GET_ANIME_GENRES";
 const SET_SELECTED_GENRE = "SET_SELECTED_GENRE";
+const GET_WINTER_ANIME = "GET_WINTER_ANIME";
+const GET_SUMMER_ANIME = "GET_SUMMER_ANIME";
+const GET_SPRING_ANIME = "GET_SPRING_ANIME";
+const GET_FALL_ANIME = "GET_FALL_ANIME";
 
-//reducer
-const reducer = (state, action) => {
-  switch (action.type) {
-    case LOADING:
-      return { ...state, loading: true };
-    case GET_POPULAR_ANIME:
-      return { ...state, popularAnime: action.payload, loading: false };
-    case SEARCH:
-      return { ...state, searchResults: action.payload, loading: false };
-    case GET_UPCOMING_ANIME:
-      return { ...state, upcomingAnime: action.payload, loading: false };
-    case GET_AIRING_ANIME:
-      return { ...state, airingAnime: action.payload, loading: false };
-    case GET_PICTURES:
-      return { ...state, pictures: action.payload, loading: false };
-    case GET_ANIME_GENRES:
-      return { ...state, animeGenres: action.payload, loading: false };
-    case GET_ANIME_DETAILS:
-      return { ...state, selectedAnime: action.payload, loading: false };
-    case SET_SELECTED_GENRE:
-      return { ...state, selectedGenre: action.payload };
-
-    default:
-      return state;
-  }
-};
-
-export const GlobalContextProvider = ({ children }) => {
+const GlobalContextProvider = ({ children }) => {
   //intial state
   const intialState = {
     popularAnime: [],
     upcomingAnime: [],
     airingAnime: [],
+    winterAnime: [],
+    summerAnime: [],
+    springAnime: [],
+    fallAnime: [],
     pictures: [],
     isSearch: false,
     searchResults: [],
@@ -57,7 +39,7 @@ export const GlobalContextProvider = ({ children }) => {
   };
 
   const [state, dispatch] = useReducer(reducer, intialState);
-  const [search, setSearch] = React.useState("");
+  const [search, setSearch] = useState("");
 
   //handle change
   const handleChange = (e) => {
@@ -80,23 +62,12 @@ export const GlobalContextProvider = ({ children }) => {
   };
 
   //fetch popular anime
-  // Inside getPopularAnime function
   const getPopularAnime = async () => {
     dispatch({ type: LOADING });
-    try {
-      const response = await fetch(`${baseUrl}/top/anime?filter=bypopularity`);
-      if (response.status === 429) {
-        console.error("API rate limit exceeded");
-        // Handle rate limit exceeded error, maybe use a timeout and retry
-        return;
-      }
-      const data = await response.json();
-      dispatch({ type: GET_POPULAR_ANIME, payload: data.data });
-    } catch (error) {
-      console.error("Error fetching popular anime:", error);
-    }
+    const response = await fetch(`${baseUrl}/top/anime?filter=bypopularity`);
+    const data = await response.json();
+    dispatch({ type: GET_POPULAR_ANIME, payload: data.data });
   };
-
 
   //fetch upcoming anime
   const getUpcomingAnime = async () => {
@@ -118,7 +89,7 @@ export const GlobalContextProvider = ({ children }) => {
   const searchAnime = async (anime) => {
     dispatch({ type: LOADING });
     const response = await fetch(
-      `https://api.jikan.moe/v4/anime?q=${anime}&order_by=popularity&sort=asc&sfw`
+      `${baseUrl}/anime?q=${anime}&order_by=popularity&sort=asc&sfw`
     );
     const data = await response.json();
     dispatch({ type: SEARCH, payload: data.data });
@@ -128,7 +99,7 @@ export const GlobalContextProvider = ({ children }) => {
   const getAnimePictures = async (id) => {
     dispatch({ type: LOADING });
     const response = await fetch(
-      `https://api.jikan.moe/v4/characters/${id}/pictures`
+      `${baseUrl}/characters/${id}/pictures`
     );
     const data = await response.json();
     dispatch({ type: GET_PICTURES, payload: data.data });
@@ -161,22 +132,55 @@ export const GlobalContextProvider = ({ children }) => {
   };
 
   // Define the getAnimeNamesByGenre function
-// Inside your context file
-const getAnimeNamesByGenre = async (genreId) => {
-  const genre = state.animeGenres.find((genre) => genre.mal_id === genreId);
-  if (genre && genre.name) {
-    return genre.name; // Return the genre name as a single string
-  }
-  return "";
-};
+  // Inside your context file
+  const getAnimeNamesByGenre = async (genreId) => {
+    const genre = state.animeGenres.find((genre) => genre.mal_id === genreId);
+    if (genre && genre.name) {
+      return genre.name; // Return the genre name as a single string
+    }
+    return "";
+  };
 
+  // fetchWinterAnime: '/seasons/2022/winter'
+  const getWinterAnime = async () => {
+    dispatch({ type: LOADING });
+    const response = await fetch(`${baseUrl}/seasons/2022/winter`);
+    const data = await response.json();
+    dispatch({ type: GET_WINTER_ANIME, payload: data.data });
+  };
 
+  // fetchAutumnAnime: '/seasons/2022/spring'
+  const getSpringAnime = async () => {
+    dispatch({ type: LOADING });
+    const response = await fetch(`${baseUrl}/seasons/2022/spring`);
+    const data = await response.json();
+    dispatch({ type: GET_SPRING_ANIME, payload: data.data });
+  };
 
+  //fetchFallAnime:'/seasons/2022/Fall'
+  const getFallAnime = async () => {
+    dispatch({ type: LOADING });
+    const response = await fetch(`${baseUrl}/seasons/2022/fall`);
+    const data = await response.json();
+    dispatch({ type: GET_FALL_ANIME, payload: data.data });
+  };
 
-  //initial render
-  React.useEffect(() => {
-    getPopularAnime(); 
-    getAnimeGenres(); // Fetch anime genres
+  // fetchSummerAnime:'/seasons/2022/summer'
+  const getSummerAnime = async () => {
+    dispatch({ type: LOADING });
+    const response = await fetch(`${baseUrl}/seasons/2022/summer`);
+    const data = await response.json();
+    dispatch({ type: GET_SUMMER_ANIME, payload: data.data });
+  };
+
+  useEffect(() => {
+    getPopularAnime();
+    getUpcomingAnime();
+    getAiringAnime();
+    getWinterAnime();
+    getSummerAnime();
+    getSpringAnime();
+    getFallAnime();
   }, []);
 
   return (
@@ -190,6 +194,10 @@ const getAnimeNamesByGenre = async (genreId) => {
         getPopularAnime,
         getUpcomingAnime,
         getAiringAnime,
+        getWinterAnime,
+        getSummerAnime,
+        getSpringAnime,
+        getFallAnime,
         getAnimePictures,
         getAnimeGenres,
         getAnimeDetails,
@@ -202,6 +210,8 @@ const getAnimeNamesByGenre = async (genreId) => {
   );
 };
 
-export const useGlobalContext = () => {
+const useGlobalContext = () => {
   return useContext(GlobalContext);
 };
+
+export { GlobalContextProvider, useGlobalContext };
