@@ -173,14 +173,34 @@ const GlobalContextProvider = ({ children }) => {
     dispatch({ type: GET_SUMMER_ANIME, payload: data.data });
   };
 
+  // useEffect(() => {
+  //   getPopularAnime();
+  //   getUpcomingAnime();
+  //   getAiringAnime();
+  //   getWinterAnime();
+  //   getSummerAnime();
+  //   getSpringAnime();
+  //   getFallAnime();
+  // }, []);
+
   useEffect(() => {
-    getPopularAnime();
-    getUpcomingAnime();
-    getAiringAnime();
-    getWinterAnime();
-    getSummerAnime();
-    getSpringAnime();
-    getFallAnime();
+    const delay = 1800; 
+
+    const fetchWithDelay = async (fetchFunction) => {
+      await new Promise((resolve) => setTimeout(resolve, delay));
+      fetchFunction();
+    };
+    const fetchAllData = async () => {
+      await fetchWithDelay(getPopularAnime);
+      await fetchWithDelay(getUpcomingAnime);
+      await fetchWithDelay(getAiringAnime);
+      await fetchWithDelay(getWinterAnime);
+      await fetchWithDelay(getSummerAnime);
+      await fetchWithDelay(getSpringAnime);
+      await fetchWithDelay(getFallAnime);
+    };
+
+    fetchAllData();
   }, []);
 
   return (
