@@ -3,97 +3,13 @@ import axios from "axios";
 import styled from "styled-components";
 
 const StyledSlide = styled.div`
+
     body {
       margin: 0;
       padding: 0;
       width: 100%;
       height: 100%;
       background: linear-gradient(to bottom, #f7a6b9 -20%, black 50%);
-    }
-
-    header {
-      position: fixed;
-      z-index: 999;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 70px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 0 30px;
-      background: black;
-      transition: all ease 0.5s;
-    }
-    .header--logo {
-      display: flex;
-      align-items: center;
-    }
-
-    .header--logo a {
-      text-decoration: none;
-    }
-
-    .header--logo img {
-      width: 200px;
-      height: auto;
-      cursor: pointer;
-    }
-
-    .header--category {
-      color: #f7a6b9;
-      text-decoration: none;
-      font-size: 20px;
-      margin: 20px;
-    }
-
-    .header--category--genres {
-      color: #fff;
-      text-decoration: none;
-      font-size: 15px;
-      padding-top: 5px;
-    }
-
-    .header--searchbar {
-      width: 100%;
-      max-width: 20%;
-      height: 50%;
-      background: #f7a6b9;
-      display: flex;
-      align-items: center;
-      border-radius: 60px;
-      padding-right: 1%;
-      padding-left: 10px;
-      margin-left: auto;
-    }
-
-    .header--searchbar input {
-      background: transparent;
-      flex: 1;
-      border: 0;
-      outline: none;
-      font-size: 15px;
-      color: #fff;
-    }
-
-    .header--searchbar ::placeholder {
-      color: #fff;
-    }
-
-    .header--searchbar button img {
-      width: 25px;
-      transition: filter 0.3s;
-    }
-
-    .header--searchbar button {
-      border: 0;
-      border-radius: 50%;
-      cursor: pointer;
-      background: transparent;
-    }
-
-    .header--searchbar button:hover img {
-      filter: invert(100%) sepia(50%) saturate(50%);
     }
     /*anime details*/
     .container--anime {
@@ -288,31 +204,7 @@ export default function Slide() {
   return (
     <>
       <StyledSlide>
-        <header>
-          <div className="header--logo">
-            <a href="/">
-              <img src="round-logo.png" alt="Logo" />
-            </a>
-          </div>
-          <a className="header--category" href="/">
-            หมวดหมู่
-          </a>
-          <a className="header--category--genres" href="/">
-            แฟนตาซี
-          </a>
-          <form action="" className="header--searchbar">
-            <input type="text" placeholder="Search.." />
-            <button type="submit">
-              <img src="search.png" alt="img" />
-            </button>
-          </form>
-        </header>
-
         <body>
-          <br />
-          <br />
-          <br />
-          <br />
 
           {shouldShowTrailer && (
             <div className="trailer-container">

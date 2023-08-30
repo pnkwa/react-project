@@ -1,12 +1,12 @@
 import React from 'react';
-// import Slide from './slide/Slide';
-import Slideshow from './slideshow/Slideshow';
+import Slide from './slide/Slide';
+// import Slideshow from './slideshow/Slideshow';
 
 function App() {
   return (
     <>
-    <Slideshow/>
-    {/* <Slide/> */}
+    {/* <Slideshow/> */}
+    <Slide/>
     </>
   );
 }
