@@ -18,8 +18,6 @@ const reducer = (state, action) => {
       return { ...state, springAnime: action.payload, loading: false };
     case GET_FALL_ANIME:
       return { ...state, fallAnime: action.payload, loading: false };
-    case GET_PICTURES:
-      return { ...state, pictures: action.payload, loading: false };
     case GET_ANIME_DETAILS:
       return { ...state, animeDetails: action.payload, loading: false };
     case GET_NOW_ANIME:
@@ -36,7 +34,6 @@ const SEARCH = "SEARCH";
 const GET_POPULAR_ANIME = "GET_POPULAR_ANIME";
 const GET_UPCOMING_ANIME = "GET_UPCOMING_ANIME";
 const GET_AIRING_ANIME = "GET_AIRING_ANIME";
-const GET_PICTURES = "GET_PICTURES";
 const GET_ANIME_DETAILS = "GET_ANIME_DETAILS";
 const GET_WINTER_ANIME = "GET_WINTER_ANIME";
 const GET_SUMMER_ANIME = "GET_SUMMER_ANIME";

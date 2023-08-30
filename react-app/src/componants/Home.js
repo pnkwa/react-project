@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AnimeRow from "./AnimeRow";
+import AnimeRow from "./showAnime/AnimeRow";
 import { useGlobalContext } from "../context/global";
 
 function Home() {

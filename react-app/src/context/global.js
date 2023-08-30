@@ -11,7 +11,6 @@ const SEARCH = "SEARCH";
 const GET_POPULAR_ANIME = "GET_POPULAR_ANIME";
 const GET_UPCOMING_ANIME = "GET_UPCOMING_ANIME";
 const GET_AIRING_ANIME = "GET_AIRING_ANIME";
-const GET_PICTURES = "GET_PICTURES";
 const GET_ANIME_DETAILS = "GET_ANIME_DETAILS";
 const GET_WINTER_ANIME = "GET_WINTER_ANIME";
 const GET_SUMMER_ANIME = "GET_SUMMER_ANIME";
@@ -30,7 +29,6 @@ const GlobalContextProvider = ({ children }) => {
     springAnime: [],
     fallAnime: [],
     nowAnime: [],
-    pictures: [],
     animeDetails: [],
     isSearch: false,
     searchResults: [],
@@ -63,7 +61,7 @@ const GlobalContextProvider = ({ children }) => {
   //fetch popular anime
   const getPopularAnime = async () => {
     dispatch({ type: LOADING });
-    const response = await fetch(`${baseUrl}/anime?filter=bypopularity`);
+    const response = await fetch(`${baseUrl}/top/anime`);
     const data = await response.json();
     dispatch({ type: GET_POPULAR_ANIME, payload: data.data });
   };
@@ -94,18 +92,10 @@ const GlobalContextProvider = ({ children }) => {
     dispatch({ type: SEARCH, payload: data.data });
   };
 
-  //get anime pictures
-  const getAnimePictures = async (id) => {
-    dispatch({ type: LOADING });
-    const response = await fetch(`${baseUrl}/characters/${id}/pictures`);
-    const data = await response.json();
-    dispatch({ type: GET_PICTURES, payload: data.data });
-  };
-
   // Fetch anime details by ID
   const getAnimeDetails = async (id) => {
     dispatch({ type: LOADING });
-    const response = await fetch(`${baseUrl}/anime/${id}`);
+    const response = await fetch(`${baseUrl}/anime/${id}/full`);
     const data = await response.json();
     dispatch({ type: GET_ANIME_DETAILS, payload: data });
   };
@@ -173,26 +163,26 @@ const GlobalContextProvider = ({ children }) => {
     fetchWithDelay();
   };
 
-  useEffect(() => {
-    const delay = 2000;
+  // useEffect(() => {
+  //   const delay = 2000;
 
-    const fetchWithDelay = async (fetchFunction) => {
-      await new Promise((resolve) => setTimeout(resolve, delay));
-      fetchFunction();
-    };
-    const fetchAllData = async () => {
-      await fetchWithDelay(getPopularAnime);
-      await fetchWithDelay(getUpcomingAnime);
-      await fetchWithDelay(getAiringAnime);
-      await fetchWithDelay(getWinterAnime);
-      await fetchWithDelay(getSummerAnime);
-      await fetchWithDelay(getSpringAnime);
-      await fetchWithDelay(getFallAnime);
-      await fetchWithDelay(getNowAnime);
-    };
+  //   const fetchWithDelay = async (fetchFunction) => {
+  //     await new Promise((resolve) => setTimeout(resolve, delay));
+  //     fetchFunction();
+  //   };
+  //   const fetchAllData = async () => {
+  //     await fetchWithDelay(getPopularAnime);
+  //     await fetchWithDelay(getUpcomingAnime);
+  //     await fetchWithDelay(getAiringAnime);
+  //     await fetchWithDelay(getWinterAnime);
+  //     await fetchWithDelay(getSummerAnime);
+  //     await fetchWithDelay(getSpringAnime);
+  //     await fetchWithDelay(getFallAnime);
+  //     await fetchWithDelay(getNowAnime);
+  //   };
 
-    fetchAllData();
-  }, []);
+  //   fetchAllData();
+  // }, []);
 
   return (
     <GlobalContext.Provider
@@ -210,7 +200,6 @@ const GlobalContextProvider = ({ children }) => {
         getSpringAnime,
         getFallAnime,
         getNowAnime,
-        getAnimePictures,
         getAnimeDetails,
       }}
     >

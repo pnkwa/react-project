@@ -1,44 +1,31 @@
-import React, { useState, useEffect } from "react";
-import AnimeTable from "./AnimeTable";
-import AnimeRow from "./AnimeRow";
+import React from "react";
+import AnimeTable from "./showAnime/AnimeTable";
+import AnimeRow from "./showAnime/AnimeRow";
 import { useGlobalContext } from "../context/global";
 import { useParams } from "react-router-dom";
+import { getGenreFromId } from "./genresCase";
 
 function Genres() {
-  const [title, setTitle] = useState("");
+  const { genreId } = useParams();
+  const { nowAnime, loading } = useGlobalContext();
 
-  const { genre } = useParams();
+  const genre = getGenreFromId(genreId);
+  const filteredAnimes = nowAnime.filter((anime) =>
+    anime.genres.some((animeGenres) => animeGenres.name === genre)
+  );
 
-  useEffect(() => {
-    setTitle(genre);
-  }, [genre]);
-  console.log(genre);
-
-  const {
-    popularAnime,
-    upcomingAnime,
-    airingAnime,
-    winterAnime,
-    summerAnime,
-    springAnime,
-    fallAnime,
-    loading,
-  } = useGlobalContext();
-
-  console.log(title);
-
-  <>
+  return (
     <div className="container--animeRow">
       {loading ? (
         <p>Loading...</p>
       ) : (
         <>
-          <AnimeRow title={"Top 10" + title + " Hit"} animes={popularAnime} />
-          <AnimeTable title={title} animes={popularAnime} />
+          <AnimeRow title={`Top 10 ${genre} Hit`} animes={filteredAnimes} />
+          <AnimeTable title={genre} animes={filteredAnimes} />
         </>
       )}
     </div>
-  </>;
+  );
 }
 
 export default Genres;
