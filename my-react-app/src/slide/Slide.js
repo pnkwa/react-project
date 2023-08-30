@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-export default function Slide() {
-  const StyledSlide = styled.div`
+const StyledSlide = styled.div`
     body {
       margin: 0;
       padding: 0;
@@ -229,6 +228,9 @@ export default function Slide() {
       background: linear-gradient(to right, #f7a6b9, #ff0582);
     }
   `;
+
+export default function Slide() {
+  
   const [showMore, setShowMore] = useState(false);
   const currentAnimeId = 5114; // รหัสอนิเมะที่ใช้ในการดึงข้อมูล
   // สร้าง state เพื่อเก็บข้อมูลอนิเมะ
