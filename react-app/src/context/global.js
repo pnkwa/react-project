@@ -163,26 +163,26 @@ const GlobalContextProvider = ({ children }) => {
     fetchWithDelay();
   };
 
-  // useEffect(() => {
-  //   const delay = 2000;
+  useEffect(() => {
+    const delay = 2000;
 
-  //   const fetchWithDelay = async (fetchFunction) => {
-  //     await new Promise((resolve) => setTimeout(resolve, delay));
-  //     fetchFunction();
-  //   };
-  //   const fetchAllData = async () => {
-  //     await fetchWithDelay(getPopularAnime);
-  //     await fetchWithDelay(getUpcomingAnime);
-  //     await fetchWithDelay(getAiringAnime);
-  //     await fetchWithDelay(getWinterAnime);
-  //     await fetchWithDelay(getSummerAnime);
-  //     await fetchWithDelay(getSpringAnime);
-  //     await fetchWithDelay(getFallAnime);
-  //     await fetchWithDelay(getNowAnime);
-  //   };
+    const fetchWithDelay = async (fetchFunction) => {
+      await new Promise((resolve) => setTimeout(resolve, delay));
+      fetchFunction();
+    };
+    const fetchAllData = async () => {
+      await fetchWithDelay(getPopularAnime);
+      await fetchWithDelay(getUpcomingAnime);
+      await fetchWithDelay(getAiringAnime);
+      await fetchWithDelay(getWinterAnime);
+      await fetchWithDelay(getSummerAnime);
+      await fetchWithDelay(getSpringAnime);
+      await fetchWithDelay(getFallAnime);
+      await fetchWithDelay(getNowAnime);
+    };
 
-  //   fetchAllData();
-  // }, []);
+    fetchAllData();
+  }, []);
 
   return (
     <GlobalContext.Provider
