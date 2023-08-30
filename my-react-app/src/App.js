@@ -4,7 +4,7 @@ import Slide from './slide/Slide'
 function App() {
   return (
     <>
-    <Slide></Slide>
+    <Slide/>
     </>
   );
 }
