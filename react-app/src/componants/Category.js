@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { getGenreFromId } from "./genresCase";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 function Category({ className }) {
   const dropdownRef = useRef(null);

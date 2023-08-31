@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import "./pinkflix-overview.css";
+// import "./pinkflix-overview.css";
 import "./pinkflix.css";
-import "./pinkflix-review.css";
+// import "./pinkflix-review.css";
 import App from "./App";
 import { GlobalContextProvider } from "./context/global";
 
