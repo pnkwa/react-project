@@ -19,7 +19,7 @@ body {
   background: black;
 } */
 
-header {
+/* header {
   position: fixed;
   z-index: 999;
   top: 0;
@@ -73,6 +73,7 @@ header {
   padding-right: 1%;
   padding-left: 10px;
   margin-left: auto;
+  justify-content: space-between;
 }
 
 .header--searchbar input {
@@ -102,7 +103,7 @@ header {
 
 .header--searchbar button:hover img {
   filter: invert(100%) sepia(50%) saturate(50%);
-}
+} */
 
 /*slideshow*/
 /* .container--slideshow {

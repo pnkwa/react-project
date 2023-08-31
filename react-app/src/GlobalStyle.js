@@ -36,20 +36,20 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     position: relative;
   }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #000000;
+  }
   
-  footer {
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 20px;
-    color: #f7a6b9;
-    text-align: center;
-    background-color: rgb(0, 0, 0);
-    transition: all ease 0.5s;
-
-  footer p {
-    padding: 20px;
-    background: black;
+  ::-webkit-scrollbar-thumb {
+    background: #f7a6b9;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ffffff38;
   }
 `;
 
