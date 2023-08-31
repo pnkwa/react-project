@@ -1,6 +1,55 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
+const Slideshow = () => {
+  const [slideIndex, setSlideIndex] = useState(0);
+  const [slideImages, setSlideImages] = useState([]);
+
+  useEffect(() => {
+    const showSlides = () => {
+      const slides = document.getElementsByClassName("mySlides");
+
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+
+      setSlideIndex((prevIndex) =>
+        prevIndex >= slides.length - 1 ? 0 : prevIndex + 1
+      );
+
+      slides[slideIndex].style.display = "block";
+    };
+
+    const interval = setInterval(showSlides, 4000);
+
+    return () => clearInterval(interval);
+  }, [slideIndex]);
+
+  useEffect(() => {
+    // Load all slide images from a directory (e.g., 'slideshow') dynamically
+    const context = require.context("/public/slideshow", false, /\.(png|jpe?g|svg)$/);
+    const images = context.keys().map(context);
+    setSlideImages(images);
+  }, []);
+
+  return (
+    <div className="container--slideshow">
+      <SlideshowLogo src="/sharp-logo.png" alt="img Logo" />
+      <SlideshowContainer>
+        {slideImages.map((imageSrc, index) => (
+          <div key={index} className="mySlides fade">
+            <SlideshowImage
+              src={imageSrc}
+              alt={`Slide ${index + 1}`}
+            />
+            <SlideshowOverlay />
+          </div>
+        ))}
+      </SlideshowContainer> 
+    </div>
+  );
+};
+
 const fade = keyframes`
   from {
     opacity: 0.4;
@@ -10,10 +59,12 @@ const fade = keyframes`
   }
 `;
 
+
 const SlideshowContainer = styled.div`
   position: relative;
   width: 100%;
   height: 50%;
+  margin-top: 40px;
   background-color: rgb(0, 0, 0);
 `;
 
@@ -37,88 +88,12 @@ const SlideshowOverlay = styled.div`
   opacity: 1;
 `;
 
-const SlideshowText = styled.div`
-  color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
+const SlideshowLogo = styled.img`
   position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
+  top: 350px;
+  right: 50%;
+  object-fit: none;
+  z-index: 3;
 `;
-
-const Slideshow = () => {
-  const [slideIndex, setSlideIndex] = useState(0);
-
-  useEffect(() => {
-    const showSlides = () => {
-      const slides = document.getElementsByClassName("mySlides");
-
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-
-      setSlideIndex((prevIndex) =>
-        prevIndex >= slides.length - 1 ? 0 : prevIndex + 1
-      );
-
-      slides[slideIndex].style.display = "block";
-    };
-
-    const interval = setInterval(showSlides, 4000);
-
-    return () => clearInterval(interval);
-  }, [slideIndex]);
-
-  return (
-    <SlideshowContainer>
-      <div className="mySlides fade">
-        <SlideshowImage src="slide-1.png" alt="Slide 1" />
-        <SlideshowOverlay />
-        <SlideshowText>Caption Text 1</SlideshowText>
-      </div>
-      <div className="mySlides fade">
-        <SlideshowImage src="slide-2.png" alt="Slide 2" />
-        <SlideshowOverlay />
-        <SlideshowText>Caption Text 2</SlideshowText>
-      </div>
-      <div className="mySlides fade">
-        <SlideshowImage src="slide-3.png" alt="Slide 3" />
-        <SlideshowOverlay />
-        <SlideshowText>Caption Text 3</SlideshowText>
-      </div>
-      <div className="mySlides fade">
-        <SlideshowImage src="slide-4.png" alt="Slide 4" />
-        <SlideshowOverlay />
-        <SlideshowText>Caption Text 4</SlideshowText>
-      </div>
-      <div className="mySlides fade">
-        <SlideshowImage src="slide-5.png" alt="Slide 5" />
-        <SlideshowOverlay />
-        <SlideshowText>Caption Text 5</SlideshowText>
-      </div>
-      <div className="mySlides fade">
-        <SlideshowImage src="slide-6.png" alt="Slide 6" />
-        <SlideshowOverlay />
-        <SlideshowText>Caption Text 6</SlideshowText>
-      </div>
-      <div className="mySlides fade">
-        <SlideshowImage src="slide-7.png" alt="Slide 7" />
-        <SlideshowOverlay />
-        <SlideshowText>Caption Text 7</SlideshowText>
-      </div>
-      <div className="mySlides fade">
-        <SlideshowImage src="slide-8.png" alt="Slide 8" />
-        <SlideshowOverlay />
-        <SlideshowText>Caption Text 8</SlideshowText>
-      </div>
-      <div className="mySlides fade">
-        <SlideshowImage src="slide-9.png" alt="Slide 9" />
-        <SlideshowOverlay />
-        <SlideshowText>Caption Text 9</SlideshowText>
-      </div>
-    </SlideshowContainer>
-  );
-};
 
 export default Slideshow;
