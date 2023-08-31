@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 
 const Slideshow = () => {
   const [slideIndex, setSlideIndex] = useState(0);
+  const [slideImages, setSlideImages] = useState([]);
 
   useEffect(() => {
     const showSlides = () => {
@@ -24,7 +25,16 @@ const Slideshow = () => {
     return () => clearInterval(interval);
   }, [slideIndex]);
 
-  const slideImages = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  useEffect(() => {
+    // Load all slide images from a directory (e.g., 'slideshow') dynamically
+    const context = require.context(
+      "/public/slideshow",
+      false,
+      /\.(png|jpe?g|svg)$/
+    );
+    const images = context.keys().map(context);
+    setSlideImages(images);
+  }, []);
 
   return (
     <div className="container--slideshow">
@@ -32,18 +42,14 @@ const Slideshow = () => {
       <SlideshowContainer>
         {slideImages.map((imageSrc, index) => (
           <div key={index} className="mySlides fade">
-            <SlideshowImage
-              src={`/slideshow/slide-${imageSrc}.png`}
-              alt={`Slide ${index + 1}`}
-            />
+            <SlideshowImage src={imageSrc} alt={`Slide ${index + 1}`} />
             <SlideshowOverlay />
           </div>
         ))}
-      </SlideshowContainer> 
+      </SlideshowContainer>
     </div>
   );
 };
-
 
 const fade = keyframes`
   from {
@@ -85,7 +91,7 @@ const SlideshowOverlay = styled.div`
 const SlideshowLogo = styled.img`
   position: absolute;
   top: 350px;
-  right: 50%;
+  right: 630px;
   object-fit: none;
   z-index: 3;
 `;

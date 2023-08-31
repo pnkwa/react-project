@@ -21,14 +21,9 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 20px;
   color: #f7a6b9;
   text-align: center;
-  background-color: rgb(0, 0, 0);
+  background-color: black;
   transition: all ease 0.5s;
-
-footer p {
   padding: 20px;
-  background: black;
-}
 `;

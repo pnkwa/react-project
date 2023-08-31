@@ -39,7 +39,7 @@ function AnimeRow({ title, animes, className }) {
           {displayedAnimes.length > 0 ? (
             displayedAnimes.map((anime) => (
               <div className="itemes" key={anime.mal_id}>
-                <Link to={`/anime-details/${anime.mal_id}`}>
+                <Link to={`/anime/${anime.mal_id}`}>
                   <img
                     src={anime.images.jpg.large_image_url}
                     alt={anime.title}

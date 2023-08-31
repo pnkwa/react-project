@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -13,7 +13,7 @@ function AnimeTable({ title, animes, className }) {
           {animes.length > 0 ? (
             animes.map((anime) => (
               <div className="itemes" key={anime.mal_id}>
-                <Link to={`/anime-details/${anime.mal_id}`}>
+                <Link to={`/anime/${anime.mal_id}`}>
                   <img
                     src={anime.images.jpg.large_image_url}
                     alt={anime.title}

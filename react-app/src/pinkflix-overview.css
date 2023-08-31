@@ -42,13 +42,13 @@
   }
 } */
 
+/* 
 
 
-/* width */
 ::-webkit-scrollbar {
   width: 10px;
 }
-/* Track */
+
 ::-webkit-scrollbar-track {
   background: #000000;
 }
@@ -59,4 +59,4 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #ffffff38;
-}
+} */
