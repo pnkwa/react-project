@@ -168,14 +168,15 @@ const GlobalContextProvider = ({ children }) => {
       fetchFunction();
     };
     const fetchAllData = async () => {
-      await fetchWithDelay(getPopularAnime);
-      await fetchWithDelay(getUpcomingAnime);
-      await fetchWithDelay(getAiringAnime);
-      await fetchWithDelay(getWinterAnime);
-      await fetchWithDelay(getSummerAnime);
-      await fetchWithDelay(getSpringAnime);
-      await fetchWithDelay(getFallAnime);
-      await fetchWithDelay(getNowAnime);
+      await fetchWithDelay(getAnimeDetails(0));
+      // await fetchWithDelay(getPopularAnime);
+      // await fetchWithDelay(getUpcomingAnime);
+      // await fetchWithDelay(getAiringAnime);
+      // await fetchWithDelay(getWinterAnime);
+      // await fetchWithDelay(getSummerAnime);
+      // await fetchWithDelay(getSpringAnime);
+      // await fetchWithDelay(getFallAnime);
+      // await fetchWithDelay(getNowAnime);
     };
 
     fetchAllData();
