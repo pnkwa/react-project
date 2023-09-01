@@ -27,7 +27,11 @@ const Slideshow = () => {
 
   useEffect(() => {
     // Load all slide images from a directory (e.g., 'slideshow') dynamically
-    const context = require.context("/public/slideshow", false, /\.(png|jpe?g|svg)$/);
+    const context = require.context(
+      "/public/slideshow",
+      false,
+      /\.(png|jpe?g|svg)$/
+    );
     const images = context.keys().map(context);
     setSlideImages(images);
   }, []);
@@ -38,14 +42,11 @@ const Slideshow = () => {
       <SlideshowContainer>
         {slideImages.map((imageSrc, index) => (
           <div key={index} className="mySlides fade">
-            <SlideshowImage
-              src={imageSrc}
-              alt={`Slide ${index + 1}`}
-            />
+            <SlideshowImage src={imageSrc} alt={`Slide ${index + 1}`} />
             <SlideshowOverlay />
           </div>
         ))}
-      </SlideshowContainer> 
+      </SlideshowContainer>
     </div>
   );
 };
@@ -58,7 +59,6 @@ const fade = keyframes`
     opacity: 1;
   }
 `;
-
 
 const SlideshowContainer = styled.div`
   position: relative;
@@ -91,7 +91,7 @@ const SlideshowOverlay = styled.div`
 const SlideshowLogo = styled.img`
   position: absolute;
   top: 350px;
-  right: 50%;
+  right: 630px;
   object-fit: none;
   z-index: 3;
 `;

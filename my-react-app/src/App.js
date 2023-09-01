@@ -1,13 +1,13 @@
 import React from 'react';
 // import Slide from './slide/Slide';
-import Slideshow from './slideshow/Slideshow';
+import Slideshow2 from './slideshow/Slideshow2';
 // import NotFound from './notfound/NotFound';
 
 
 function App() {
   return (
     <>
-    <Slideshow/>
+    <Slideshow2/>
     {/* <Slide/> */}
     {/* <NotFound/> */}
     </>
