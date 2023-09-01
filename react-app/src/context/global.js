@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useReducer } from "react";
+import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import reducer from "./reducer";
+import axios from "axios";
 
 const GlobalContext = createContext();
 const baseUrl = "https://api.jikan.moe/v4";
@@ -61,75 +63,71 @@ const GlobalContextProvider = ({ children }) => {
   //fetch popular anime
   const getPopularAnime = async () => {
     dispatch({ type: LOADING });
-    const response = await fetch(`${baseUrl}/top/anime`);
-    const data = await response.json();
-    dispatch({ type: GET_POPULAR_ANIME, payload: data.data });
+    const response = await axios.get(`${baseUrl}/top/anime?limit=10`); // <-- change Fetch to axios
+    console.log(response);
+    dispatch({ type: GET_POPULAR_ANIME, payload: response.data.data }); //<-- add more .data
   };
 
   //fetch upcoming anime
   const getUpcomingAnime = async () => {
     dispatch({ type: LOADING });
-    const response = await fetch(`${baseUrl}/top/anime?filter=upcoming`);
-    const data = await response.json();
-    dispatch({ type: GET_UPCOMING_ANIME, payload: data.data });
+    const response = await axios.get(
+      `${baseUrl}/top/anime?filter=upcoming&limit=10`
+    );
+    dispatch({ type: GET_UPCOMING_ANIME, payload: response.data.data });
   };
 
   //fetch airing anime
   const getAiringAnime = async () => {
     dispatch({ type: LOADING });
-    const response = await fetch(`${baseUrl}/top/anime?filter=airing`);
-    const data = await response.json();
-    dispatch({ type: GET_AIRING_ANIME, payload: data.data });
+    const response = await axios.get(
+      `${baseUrl}/top/anime?filter=airing&limit=10`
+    );
+    dispatch({ type: GET_AIRING_ANIME, payload: response.data.data });
   };
 
   //search anime
   const searchAnime = async (anime) => {
     dispatch({ type: LOADING });
-    const response = await fetch(
+    const response = await axios.get(
       `${baseUrl}/anime?q=${anime}&order_by=popularity&sort=asc&sfw`
     );
-    const data = await response.json();
-    dispatch({ type: SEARCH, payload: data.data });
+    dispatch({ type: SEARCH, payload: response.data.data });
   };
 
   // Fetch anime details by ID
   const getAnimeDetails = async (id) => {
     dispatch({ type: LOADING });
-    const response = await fetch(`${baseUrl}/anime/${id}/full`);
-    const data = await response.json();
-    dispatch({ type: GET_ANIME_DETAILS, payload: data });
+    const response = await axios.get(`${baseUrl}/anime/${id}/full`);
+    dispatch({ type: GET_ANIME_DETAILS, payload: response });
   };
 
   // fetchWinterAnime: '/seasons/2022/winter'
   const getWinterAnime = async () => {
     dispatch({ type: LOADING });
-    const response = await fetch(`${baseUrl}/seasons/2022/winter`);
-    const data = await response.json();
-    dispatch({ type: GET_WINTER_ANIME, payload: data.data });
+    const response = await axios.get(`${baseUrl}/seasons/2022/winter?limit=10`);
+    dispatch({ type: GET_WINTER_ANIME, payload: response.data.data });
   };
 
   // fetchAutumnAnime: '/seasons/2022/spring'
   const getSpringAnime = async () => {
     dispatch({ type: LOADING });
-    const response = await fetch(`${baseUrl}/seasons/2022/spring`);
-    const data = await response.json();
-    dispatch({ type: GET_SPRING_ANIME, payload: data.data });
+    const response = await axios.get(`${baseUrl}/seasons/2022/spring?limit=10`);
+    dispatch({ type: GET_SPRING_ANIME, payload: response.data.data });
   };
 
   //fetchFallAnime:'/seasons/2022/Fall'
   const getFallAnime = async () => {
     dispatch({ type: LOADING });
-    const response = await fetch(`${baseUrl}/seasons/2022/fall`);
-    const data = await response.json();
-    dispatch({ type: GET_FALL_ANIME, payload: data.data });
+    const response = await axios.get(`${baseUrl}/seasons/2022/fall?limit=10`);
+    dispatch({ type: GET_FALL_ANIME, payload: response.data.data });
   };
 
   // fetchSummerAnime:'/seasons/2022/summer'
   const getSummerAnime = async () => {
     dispatch({ type: LOADING });
-    const response = await fetch(`${baseUrl}/seasons/2022/summer`);
-    const data = await response.json();
-    dispatch({ type: GET_SUMMER_ANIME, payload: data.data });
+    const response = await axios.get(`${baseUrl}/seasons/2022/summer?limit=10`);
+    dispatch({ type: GET_SUMMER_ANIME, payload: response.data.data });
   };
 
   // fetchNowSeason, 2 page:/seasons/now?type=anime&page=
@@ -139,11 +137,10 @@ const GlobalContextProvider = ({ children }) => {
     let allData = [];
 
     const fetchPageData = async (page) => {
-      const response = await fetch(
+      const response = await axios.get(
         `${baseUrl}/seasons/now?type=anime&page=${page}`
       );
-      const data = await response.json();
-      return data.data;
+      return response.data.data;
     };
 
     const fetchWithDelay = async () => {
@@ -210,6 +207,10 @@ const GlobalContextProvider = ({ children }) => {
 
 const useGlobalContext = () => {
   return useContext(GlobalContext);
+};
+
+GlobalContext.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export { GlobalContextProvider, useGlobalContext };

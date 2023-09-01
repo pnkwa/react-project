@@ -4,11 +4,11 @@ import { useGlobalContext } from "../context/global";
 import styled from "styled-components";
 
 function TestSearch() {
-  const { searchResults, isSearch, popularAnime } = useGlobalContext();
+  const { searchResults, isSearch, nowAnime } = useGlobalContext();
 
   const conditionalRender = () => {
     if (!isSearch) {
-      return popularAnime.map((anime) => {
+      return nowAnime.map((anime) => {
         return (
           <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
             <img src={anime.images.jpg.large_image_url} alt="" />

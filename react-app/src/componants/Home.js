@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import AnimeRow from "./showAnime/AnimeRow";
 import { useGlobalContext } from "../context/global";
 
-function Home() {
+
+function Home({className}) {
   const {
     popularAnime,
     upcomingAnime,
@@ -15,7 +17,7 @@ function Home() {
   } = useGlobalContext();
 
   return (
-    <>
+    <div className={className}>
       <div className="container--animeRow">
         {loading ? (
           <p>Loading...</p>
@@ -31,7 +33,11 @@ function Home() {
           </>
         )}
       </div>
-    </>
+    </div>
   );
 }
+Home.propTypes = {
+  className: PropTypes.string.isRequired
+};
+
 export default Home;
