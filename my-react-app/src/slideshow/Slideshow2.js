@@ -98,6 +98,14 @@ const ActiveDot = styled(Dot)`
   background-color: #717171;
 `;
 
+const SlideshowLogo = styled.img`
+  position: absolute;
+  top: 350px;
+  right: 630px;
+  object-fit: none;
+  z-index: 3;
+`;
+
 function Slideshow() {
   const [slideIndex, setSlideIndex] = useState(1);
   const [slideImages, setSlideImages] = useState([]);
@@ -137,7 +145,9 @@ function Slideshow() {
 
   return (
     <div>
+
       <SlideshowContainer>
+      <SlideshowLogo src="/sharp-logo.png" alt="img Logo" />
         {slideImages.map((imageSrc, index) => (
           <MySlides
             key={index}
