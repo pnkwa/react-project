@@ -2,148 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
-const StyledSlide = styled.div`
-
-    body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, #f7a6b9 -20%, black 50%);
-    }
-    /*anime details*/
-    .container--anime {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      background-color: transparent;
-      height: 1000px;
-      padding: 0 30px 0 30px;
-      margin: 30px 50px;
-    }
-    .container--anime--image {
-      width: 40%;
-      height: 500px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    .container--anime--image img {
-      --c: #f7a6b9; /* สีขอบ */
-      --b: 10px; /* ความหนาขอบ */
-      --g: 5px; /* ช่องว่างเมื่อโฮเวอร์ */
-      --_g: #0000 25%, var(--c) 0;
-      width: 420px;
-      height: 594px;
-      transform: scale(1);
-      transition: all ease 0.2s;
-      border-radius: 5px;
-      object-fit: cover;
-      object-position: 100% 30%;
-      cursor: pointer;
-      padding: calc(var(--g) + var(--b));
-      background: conic-gradient(
-            from 180deg at top var(--b) right var(--b),
-            var(--_g)
-          )
-          var(--_i, 200%) 0 / 200% var(--_i, var(--b)) no-repeat,
-        conic-gradient(at bottom var(--b) left var(--b), var(--_g)) 0
-          var(--_i, 200%) / var(--_i, var(--b)) 200% no-repeat;
-      transition: 0.3s, background-position 0.3s 0.3s;
-    }
-    .container--anime--image img:hover {
-      --_i: 100%;
-      transition: 0.3s, background-size 0.3s 0.3s;
-    }
-
-    .container--anime--details {
-      color: #fff;
-      background-color: transparent;
-      width: 60%;
-      height: 500px;
-    }
-    .container--anime--details .infomation {
-      display: flex;
-      flex-direction: column;
-      padding: 0 30px 0 30px;
-    }
-    .container--anime--details .title {
-      color: #f7a6b9;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      list-style: none;
-      background-color: transparent;
-    }
-    .container--anime--details .title {
-      padding: 0 10px 0 10px;
-      font-size: 16px;
-    }
-    .container--anime--details .synopsis {
-      text-align: left;
-      font-size: 16px;
-      padding: 30px;
-    }
-
-    .container--anime--details .synopsis button {
-      background-color: transparent;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      font-weight: 600;
-      color: #f7a6b9;
-    }
-
-    .container--anime--details .infomation {
-      text-align: left;
-      font-size: 16px;
-    }
-    .container--anime--details .infomation b {
-      color: #f7a6b9;
-    }
-
-    .infomation ul {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      list-style: none;
-      padding: 0;
-    }
-    .infomation ul img {
-      width: 100px;
-      float: right;
-    }
-    .container--anime--details .rating {
-      display: flex;
-      flex-direction: row;
-      margin: 0 30px 0 30px;
-      align-items: center;
-    }
-    .container--anime--details .rating p {
-      padding-top: 10px;
-    }
-    .container--anime--details .rating-star {
-      padding-left: 20px;
-      font-size: 30px;
-      color: #f7a6b9;
-    }
-
-    .container--anime--details .logo {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      margin-right: 10px;
-    }
-    .container--anime--details .logo img {
-      width: 230px;
-    }
-    .trailer-container {
-      padding: 5px 5px 5px 5px;
-      position: relative;
-      background: linear-gradient(to right, #f7a6b9, #ff0582);
-    }
-  `;
 
 export default function Slide() {
   
@@ -287,3 +145,146 @@ export default function Slide() {
     </>
   );
 }
+
+const StyledSlide = styled.div`
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #f7a6b9 -20%, black 50%);
+    }
+    /*anime details*/
+    .container--anime {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+      height: 1000px;
+      padding: 0 30px 0 30px;
+      margin: 30px 50px;
+    }
+    .container--anime--image {
+      width: 40%;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .container--anime--image img {
+      --c: #f7a6b9; /* สีขอบ */
+      --b: 10px; /* ความหนาขอบ */
+      --g: 5px; /* ช่องว่างเมื่อโฮเวอร์ */
+      --_g: #0000 25%, var(--c) 0;
+      width: 420px;
+      height: 594px;
+      transform: scale(1);
+      transition: all ease 0.2s;
+      border-radius: 5px;
+      object-fit: cover;
+      object-position: 100% 30%;
+      cursor: pointer;
+      padding: calc(var(--g) + var(--b));
+      background: conic-gradient(
+            from 180deg at top var(--b) right var(--b),
+            var(--_g)
+          )
+          var(--_i, 200%) 0 / 200% var(--_i, var(--b)) no-repeat,
+        conic-gradient(at bottom var(--b) left var(--b), var(--_g)) 0
+          var(--_i, 200%) / var(--_i, var(--b)) 200% no-repeat;
+      transition: 0.3s, background-position 0.3s 0.3s;
+    }
+    .container--anime--image img:hover {
+      --_i: 100%;
+      transition: 0.3s, background-size 0.3s 0.3s;
+    }
+
+    .container--anime--details {
+      color: #fff;
+      background-color: transparent;
+      width: 60%;
+      height: 500px;
+    }
+    .container--anime--details .infomation {
+      display: flex;
+      flex-direction: column;
+      padding: 0 30px 0 30px;
+    }
+    .container--anime--details .title {
+      color: #f7a6b9;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      list-style: none;
+      background-color: transparent;
+    }
+    .container--anime--details .title {
+      padding: 0 10px 0 10px;
+      font-size: 16px;
+    }
+    .container--anime--details .synopsis {
+      text-align: left;
+      font-size: 16px;
+      padding: 30px;
+    }
+
+    .container--anime--details .synopsis button {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-weight: 600;
+      color: #f7a6b9;
+    }
+
+    .container--anime--details .infomation {
+      text-align: left;
+      font-size: 16px;
+    }
+    .container--anime--details .infomation b {
+      color: #f7a6b9;
+    }
+
+    .infomation ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      list-style: none;
+      padding: 0;
+    }
+    .infomation ul img {
+      width: 100px;
+      float: right;
+    }
+    .container--anime--details .rating {
+      display: flex;
+      flex-direction: row;
+      margin: 0 30px 0 30px;
+      align-items: center;
+    }
+    .container--anime--details .rating p {
+      padding-top: 10px;
+    }
+    .container--anime--details .rating-star {
+      padding-left: 20px;
+      font-size: 30px;
+      color: #f7a6b9;
+    }
+
+    .container--anime--details .logo {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-right: 10px;
+    }
+    .container--anime--details .logo img {
+      width: 230px;
+    }
+    .trailer-container {
+      padding: 5px 5px 5px 5px;
+      position: relative;
+      background: linear-gradient(to right, #f7a6b9, #ff0582);
+    }
+  `;

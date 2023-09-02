@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 function TestSearch() {
   const { searchResults, isSearch, nowAnime } = useGlobalContext();
+  console.log(searchResults);
 
   const conditionalRender = () => {
     if (!isSearch) {

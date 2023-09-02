@@ -1,20 +1,3 @@
-// import React from 'react';
-// // import Slide from './slide/Slide';
-// import Slideshow2 from './slideshow/Slideshow2';
-// // import NotFound from './notfound/NotFound';
-
-
-// function App() {
-//   return (
-//     <>
-//     <Slideshow2/>
-//     {/* <Slide/> */}
-//     {/* <NotFound/> */}
-//     </>
-//   );
-// }
-
-// export default App;
 import React from "react";
 import Home from "./componants/Home";
 import { Routes, Route, useLocation, Switch} from "react-router-dom";
@@ -52,5 +35,3 @@ function App() {
 }
 
 export default App;
-
- {/* <Route path="/anime/:id" element={<Slide />} /> */}

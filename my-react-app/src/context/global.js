@@ -68,6 +68,7 @@ const GlobalContextProvider = ({ children }) => {
     dispatch({ type: GET_POPULAR_ANIME, payload: response.data.data }); //<-- add more .data
   };
 
+
   //fetch upcoming anime
   const getUpcomingAnime = async () => {
     dispatch({ type: LOADING });
@@ -98,7 +99,7 @@ const GlobalContextProvider = ({ children }) => {
   // Fetch anime details by ID
   const getAnimeDetails = async (id) => {
     dispatch({ type: LOADING });
-    const response = await axios.get(`${baseUrl}/anime/${id}`);
+    const response = await axios.get(`${baseUrl}/anime/${id}/full`);
     dispatch({ type: GET_ANIME_DETAILS, payload: response });
   };
 
