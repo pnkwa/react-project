@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function AnimeTable({ title, animes, className }) {
+  const [displayedAnimes, setDisplayedAnimes] = useState([]);
+  useEffect(() => {
+    if (animes) {
+      setDisplayedAnimes(animes); 
+    }
+  }, [animes]);
+
 
   return (
     <div className={className}>
       <div className="container--animeRow--anime">
         <h1>Anime {title}</h1>
         <div className="container--animeRow--anime--all--list">
-          {animes.length > 0 ? (
-            animes.map((anime) => (
+          {displayedAnimes.length > 0 ? (
+            displayedAnimes.map((anime) => (
               <div className="itemes" key={anime.mal_id}>
                 <Link to={`/anime/${anime.mal_id}`}>
                   <img

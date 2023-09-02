@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 
-
-
 function Slideshow() {
   const [slideIndex, setSlideIndex] = useState(1);
   const [slideImages, setSlideImages] = useState([]);

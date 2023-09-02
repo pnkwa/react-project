@@ -16,6 +16,10 @@ function TestSearch() {
         );
       });
     }
+
+    if (searchResults.length === 0) {
+      return <p className="notFoundMessage">NO ANIME FOUND</p>;
+    }
     return searchResults.map((anime) => {
       return (
         <Link to={`/anime/${anime.mal_id}`} key={anime.mal_id}>
@@ -27,17 +31,12 @@ function TestSearch() {
 
   return (
     <PopularStyled>
-      {/* <div className="hero--image"></div> */}
-      <div className="popular-anime">
-        {/* render function */}
-        {conditionalRender()}
-      </div>
+      <div className="popular-anime">{conditionalRender()}</div>
     </PopularStyled>
   );
 }
 
 const PopularStyled = styled.div`
-
   .popular-anime {
     margin-top: 3rem;
     padding: 2rem 5rem 2rem 5rem;
@@ -47,7 +46,7 @@ const PopularStyled = styled.div`
     grid-gap: 1rem;
     background-color: rgb(22, 22, 22);
     background: linear-gradient(to top, #f7a6b9 -20%, black 50%);
-    
+
     a {
       height: 340px;
       width: 100%;
@@ -63,6 +62,15 @@ const PopularStyled = styled.div`
     }
     a img:hover {
       transform: scale(1);
+    }
+
+    .notFoundMessage {
+      color: #ff0582;
+      text-decoration: bold;
+      font-size: 80px;
+      font-weight: bold;
+      width: 1200px;
+      text-align: center;
     }
   }
 `;

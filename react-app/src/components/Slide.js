@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import { useGlobalContext } from "../context/global";
 import { useParams } from "react-router-dom";
 import NotFound from "./NotFound";
 
 export default function Slide() {
-  const { getAnimeDetails, animeDetails, loading } = useGlobalContext;
   const { id } = useParams();
   const [showMore, setShowMore] = useState(false);
-  const currentAnimeId = id;
   const [error, setError] = useState(null);
   const [anime, setAnime] = useState({
     title: "",
@@ -25,14 +22,14 @@ export default function Slide() {
     genres: "",
     trailer: {},
   });
-  // ใช้ useEffect เพื่อดึงข้อมูลอนิเมะเมื่อคอมโพเนนต์โหลด
+
   useEffect(() => {
     const fetchAnimeData = async () => {
-      const apiUrl = `https://api.jikan.moe/v4/anime/${currentAnimeId}/full`;
+      const apiUrl = `https://api.jikan.moe/v4/anime/${id}/full`;
 
       try {
-        const response = await axios.get(apiUrl); // ส่งคำขอ GET ไปยัง API
-        const animeData = response.data.data; // ข้อมูลอนิเมะที่ได้รับจาก API
+        const response = await axios.get(apiUrl);
+        const animeData = response.data.data; 
         setAnime({
           title: animeData.title,
           image: animeData.images.jpg.large_image_url,
@@ -46,7 +43,7 @@ export default function Slide() {
           season: animeData.season,
           genres: animeData.genres.map((genre) => genre.name).join(", "),
           trailer: animeData.trailer,
-        }); // อัปเดต state ด้วยข้อมูลอนิเมะ
+        }); 
         console.log(animeData);
       } catch (error) {
         console.error(error);
@@ -54,12 +51,11 @@ export default function Slide() {
       }
     };
 
-    fetchAnimeData(); // เรียกใช้ฟังก์ชันเมื่อคอมโพเนนต์โหลด
-  }, []); // [] คือ dependency array เปล่าๆ หมายถึงให้ useEffect ทำงานเมื่อคอมโพเนนต์โหลดครั้งเดียว
+    fetchAnimeData(); 
+  }, []); 
 
   console.log("tr: " + anime.trailer.youtube_id);
 
-  // ตรวจสอบว่าควรแสดงวิดีโอตัวอย่างหรือไม่
   const shouldShowTrailer =
     anime.trailer && anime.trailer.youtube_id && !anime.trailer.error;
 

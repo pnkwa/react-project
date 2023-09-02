@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { getGenreFromId } from "./genresCase";
+import { genreNames, getGenreFromId } from "../context/genresCase";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
@@ -64,30 +64,11 @@ function Category({ className }) {
           <div className="caret"></div>
         </div>
         <ul className="menu">
-          <Link to="/genres/1">
-            <li>Action</li>
-          </Link>
-          <Link to="/genres/2">
-            <li>Fantasy</li>
-          </Link>
-          <Link to="/genres/3">
-            <li>Adventure</li>
-          </Link>
-          <Link to="/genres/4">
-            <li>Romance</li>
-          </Link>
-          <Link to="/genres/5">
-            <li>Drama</li>
-          </Link>
-          <Link to="/genres/6">
-            <li>Comedy</li>
-          </Link>
-          <Link to="/genres/7">
-            <li>Horror</li>
-          </Link>
-          <Link to="/genres/8">
-            <li>Sports</li>
-          </Link>
+          {genreNames.map((genreName, index) => (
+            <Link to={`/genres/${index + 1}`} key={index}>
+              <li>{genreName}</li>
+            </Link>
+          ))}
         </ul>
       </div>
     </div>

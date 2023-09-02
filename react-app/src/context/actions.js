@@ -1,12 +1,11 @@
 import { createAction } from "@reduxjs/toolkit";
 
-//actions=
+//actions
 export const loadingAction = createAction("LOADING");
 export const searchAction = createAction("SEARCH");
 export const popularAction = createAction("GET_POPULAR_ANIME");
 export const upComingAction = createAction("GET_UPCOMING_ANIME");
 export const airingAction = createAction("GET_AIRING_ANIME");
-export const animeDetailsAction = createAction("GET_ANIME_DETAILS");
 export const winterAction = createAction("GET_WINTER_ANIME");
 export const summerAction = createAction("GET_SUMMER_ANIME");
 export const springAction = createAction("GET_SPRING_ANIME");

@@ -1,4 +1,4 @@
-export const getGenreFromId = (id) => {
+const getGenreFromId = (id) => {
     switch (id) {
       case "1":
         return "Action";
@@ -15,8 +15,21 @@ export const getGenreFromId = (id) => {
       case "7":
         return "Horror";
       case "8":
-        return "Sports";
+        return "Sci-Fi";
       default:
         return "Genres";
     }
   };
+
+  const genreNames = [
+    "Action",
+    "Fantasy",
+    "Adventure",
+    "Romance",
+    "Drama",
+    "Comedy",
+    "Horror",
+    "Sci-Fi",
+  ];
+
+  export {getGenreFromId, genreNames}

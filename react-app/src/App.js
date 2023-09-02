@@ -1,6 +1,6 @@
 import React from "react";
 import Home from "./components/Home";
-import { Routes, Route, useLocation, Switch} from "react-router-dom";
+import { Routes, Route, useLocation} from "react-router-dom";
 import Genres from "./components/Genres";
 import GlobalStyle from "./GlobalStyle";
 import Navbar from "./components/Navbar";
@@ -24,7 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/genres/:genreId" element={<Genres />} />
-          <Route path="/testSearch" element={<TestSearch />} />
+          <Route path="/search" element={<TestSearch />} />
           <Route path="/anime/:id" element={<Slide />} />
           <Route path="*" element={<NotFound/>} />
         </Routes>

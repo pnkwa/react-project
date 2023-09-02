@@ -5,7 +5,6 @@ import TestSearch from "./TestSearch";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-
 function Navbar({className}) {
   const { handleChange, handleSubmit, search} =
     useGlobalContext();
@@ -21,7 +20,7 @@ function Navbar({className}) {
       <Category />
 
       <form action="" className="header--searchbar" onSubmit={handleSubmit}>
-        <Link to="/TestSearch" element={<TestSearch />}>
+        <Link to="/search" element={<TestSearch />}>
           <input
             type="text"
             placeholder="Search.."

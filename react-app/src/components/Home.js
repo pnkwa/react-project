@@ -14,8 +14,15 @@ function Home() {
     loading,
   } = useGlobalContext();
 
-
-
+  const animeHome = [
+    { title: "Top 10 Hit", animes: popularAnime },
+    { title: "Now Airing", animes: airingAnime },
+    { title: "Upcoming", animes: upcomingAnime },
+    { title: "Top 2022 Winter", animes: winterAnime },
+    { title: "Top 2022 Summer", animes: summerAnime },
+    { title: "Top 2022 Spring", animes: springAnime },
+    { title: "Top 2022 Fall", animes: fallAnime },
+  ];
 
   return (
     <>
@@ -24,13 +31,9 @@ function Home() {
           <p>Loading...</p>
         ) : (
           <>
-            <AnimeRow title="Top 10 Hit" animes={popularAnime} />
-            <AnimeRow title="Now Airing" animes={airingAnime} />
-            <AnimeRow title="Upcoming" animes={upcomingAnime} />
-            <AnimeRow title="Top 2022 Winter" animes={winterAnime} />
-            <AnimeRow title="Top 2022 Summer" animes={summerAnime} />
-            <AnimeRow title="Top 2022 Spring" animes={springAnime} />
-            <AnimeRow title="Top 2022 Fall" animes={fallAnime} />
+            {animeHome.map((row, index) => (
+              <AnimeRow key={index} title={row.title} animes={row.animes} />
+            ))}
           </>
         )}
       </div>
