@@ -1,15 +1,15 @@
 import React from "react";
-import Home from "./componants/Home";
+import Home from "./components/Home";
 import { Routes, Route, useLocation, Switch} from "react-router-dom";
-import Genres from "./componants/Genres";
+import Genres from "./components/Genres";
 import GlobalStyle from "./GlobalStyle";
-import Navbar from "./componants/Navbar";
-import Slideshow from "./componants/Slideshow";
-import Container from "./componants/Container";
-import NotFound from "./componants/NotFound";
-import Footer from "./componants/Footer";
-import TestSearch from "./componants/TestSearch";
-import Slide from "./componants/Slide";
+import Navbar from "./components/Navbar";
+import Slideshow from "./components/Slideshow";
+import Container from "./components/Container";
+import NotFound from "./components/NotFound";
+import Footer from "./components/Footer";
+import TestSearch from "./components/TestSearch";
+import Slide from "./components/Slide";
 
 function App() {
   const location = useLocation();
