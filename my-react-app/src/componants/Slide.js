@@ -85,12 +85,15 @@ export default function Slide() {
       )}
 
       <div className="container">
-      <br/><br/><br/><br/>
+     
         <div className="container--anime">
+        
           <div className="container--anime--image">
+          <br/><br/><br/><br/><br/><br/><br/><br/>
             <img src={anime.image} alt={anime.title} />
           </div>
           <div className="container--anime--details">
+          <br/><br/><br/><br/>
             <div className="title">
               <h1>{anime.title}</h1>
             </div>
@@ -140,6 +143,7 @@ export default function Slide() {
                 <p>
                   <b>
                     Rating :
+                    {/* <br/><br/> */}
                     <div className="rating-star">
                       <PinkStars value={starsCount} inactiveColor="#C0C0C0" activeColor="#f7a6b9"/>
                     </div>
@@ -153,7 +157,9 @@ export default function Slide() {
           </div>
         </div>
       </div>
+      <br/><br/><br/><br/>
     </StyledSlide>
+    
   );
 }
 
@@ -270,11 +276,10 @@ const StyledSlide = styled.div`
     padding-top: 10px;
   }
   .container--anime--details .rating-star {
-    padding-left: 20px;
+    padding: 20px;
     font-size: 30px;
     color: #f7a6b9;
   }
 `;
 const PinkStars = styled(BeautyStars)`
-  
 `;
