@@ -85,6 +85,7 @@ export default function Slide() {
       )}
 
       <div className="container">
+      <br/><br/><br/><br/>
         <div className="container--anime">
           <div className="container--anime--image">
             <img src={anime.image} alt={anime.title} />
