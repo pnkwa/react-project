@@ -1,4 +1,4 @@
-# React Project
+# PINKFLIX React Project 
 ***NOTICE:***
 The branch named "KwanJai" is currently unavailable. You can view this branch on GitHub by following this link: [KwanJai Branch](https://github.com/ChakrisKub/react-project)
 #
